@@ -12,16 +12,30 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.0.1.RELEASE</spring.version>
+        <spring.version>4.0.6.RELEASE</spring.version>
         <jstl.version>1.2</jstl.version>
         <javax.servlet.version>3.0.1</javax.servlet.version>
+        <hibernate.version>4.3.6.Final</hibernate.version>
+        <mysql.version>5.1.31</mysql.version>
     </properties>
     
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>4.0.2.RELEASE</version>
+            <version>${spring.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>1.8.2.RELEASE</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -46,6 +60,11 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
          <dependency>  
             <groupId>javax.servlet</groupId>  
             <artifactId>javax.servlet-api</artifactId>  
@@ -58,6 +77,33 @@
             <artifactId>jstl</artifactId>  
             <version>${jstl.version}</version>  
         </dependency>  
+        
+        <!-- Hibernate -->
+	<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+	</dependency>
+         <dependency>
+	  <groupId>org.hibernate</groupId>
+	  <artifactId>hibernate-entitymanager</artifactId>
+	  <version>${hibernate.version}</version>
+	 </dependency>
+         
+         <!-- jpa -->
+         <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>1.0.1.Final</version>
+        </dependency>
+         
+         <!-- MySQL -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+		</dependency>
+
     </dependencies>
 
     <build>
