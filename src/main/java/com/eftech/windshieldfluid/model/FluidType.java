@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.validation.constraints.Size;
+import java.util.List;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 
 @Entity
 @Table(name="fluidtype")
@@ -15,6 +19,7 @@ public class FluidType implements Serializable {
    
     private int id;
     private String type;
+    private List<Fluid> fluids;
 
     @Id
     @Column(name = "idfluidtype")
@@ -35,6 +40,15 @@ public class FluidType implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true, mappedBy = "fluidType")
+    public List<Fluid> getFluids() {
+        return fluids;
+    }
+
+    public void setFluids(List<Fluid> fluids) {
+        this.fluids = fluids;
     }
     
     

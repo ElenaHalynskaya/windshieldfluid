@@ -5,41 +5,60 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.validation.constraints.Size;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import java.util.List;
 
-/**
- *
- * @author Elena
- */
 @Entity
+@Table(name="use")
 public class Use implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    
+    private int id;
+    private String useName;
+    private List<Fluid> fluids;
 
-    public Long getId() {
+    @Id
+    @Column(name = "iduse")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    @Size(min=2, max=45)
+    @Column(name = "use", nullable = false)
+    public String getUseName() {
+        return useName;
     }
 
+    public void setUseName(String useName) {
+        this.useName = useName;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true, mappedBy = "use")
+    public List<Fluid> getFluids() {
+        return fluids;
+    }
+
+    public void setFluids(List<Fluid> fluids) {
+        this.fluids = fluids;
+    }
+    
+    
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Use)) {
+         if (!(object instanceof Use)) {
             return false;
         }
         Use other = (Use) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.id != other.id) || (this.useName != other.useName)) {
             return false;
         }
         return true;
@@ -47,7 +66,7 @@ public class Use implements Serializable {
 
     @Override
     public String toString() {
-        return "com.eftech.windshieldfluid.model.Use[ id=" + id + " ]";
+        return "com.eftech.windshieldfluid.model.Use[ id=" + id + ", useName=" + useName + " ]";
     }
     
 }

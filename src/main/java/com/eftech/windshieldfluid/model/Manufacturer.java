@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.validation.constraints.Size;
+import java.util.List;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 
 @Entity
 @Table(name="manufacturer")
@@ -17,6 +21,7 @@ public class Manufacturer implements Serializable {
     private String manufacturerName;
     private String discription;
     private String pictureName;
+    private List<Fluid> fluids;
 
     @Id
     @Column(name = "idmanufacturer")
@@ -58,6 +63,16 @@ public class Manufacturer implements Serializable {
     public void setPictureName(String pictureName) {
         this.pictureName = pictureName;
     }
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true, mappedBy = "manufacturer")
+    public List<Fluid> getFluids() {
+        return fluids;
+    }
+
+    public void setFluids(List<Fluid> fluids) {
+        this.fluids = fluids;
+    }
+    
     
     @Override
     public boolean equals(Object object) {

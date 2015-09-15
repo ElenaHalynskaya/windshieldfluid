@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.validation.constraints.Size;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name="fluid")
@@ -16,12 +18,12 @@ public class Fluid implements Serializable {
     private int id;
     private String fluidName;
     private String pictureName;
-    //private Country country;
-    //private Capacity capacity;
-    //private FluidType fluidtype;
-    //private Manufacturer manufacturer;
-    //private Temperature temperature;
-    //private Use use;
+    private Capacity capacity;
+    private Country country;
+    private FluidType fluidType;
+    private Manufacturer manufacturer;
+    private Temperature temperature;
+    private Use use;
     private String price;
     
     @Id
@@ -63,20 +65,79 @@ public class Fluid implements Serializable {
     public void setPrice(String price) {
         this.price = price;
     }
-    
+
+    @ManyToOne
+    @JoinColumn(name="capacity_idcapacity")
+    public Capacity getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Capacity capacity) {
+        this.capacity = capacity;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="country_idcountry")
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="fluidtype_idfluidtype")
+    public FluidType getFluidType() {
+        return fluidType;
+    }
+
+    public void setFluidType(FluidType fluidType) {
+        this.fluidType = fluidType;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="manufacturer_idmanufacturer")
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="temperature_idtemperature")
+    public Temperature getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(Temperature temperature) {
+        this.temperature = temperature;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="use_iduse")
+    public Use getUse() {
+        return use;
+    }
+
+    public void setUse(Use use) {
+        this.use = use;
+    }
+        
     
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Fluid)) {
+           if (!(object instanceof Fluid)) {
             return false;
         }
         Fluid other = (Fluid) object;
         if ((this.id != other.id) || (this.fluidName != other.fluidName) 
                 || (this.pictureName != other.pictureName) || (this.price != other.price)
-                //|| (this.country != other.country) || (this.fluidtype != other.fluidtype)
-               // || (this.manufacturer != other.manufacturer) || (this.temperature != other.temperature)
-               // || (this.use != other.use)
+                || (this.country != other.country) || (this.fluidType != other.fluidType)
+                || (this.manufacturer != other.manufacturer) || (this.temperature != other.temperature)
+                || (this.use != other.use)|| (this.capacity != other.capacity)
                 ) {
             return false;
         }

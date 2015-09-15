@@ -7,6 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
+import java.util.List;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 
 @Entity
 @Table(name="temperature")
@@ -15,6 +19,7 @@ public class Temperature implements Serializable {
     private int id;
     private int temperatureMin;
     private int temperatureMax;
+    private List<Fluid> fluids;
 
     @Id
     @Column(name = "idtemperature")
@@ -45,10 +50,18 @@ public class Temperature implements Serializable {
         this.temperatureMax = temperatureMax;
     }
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true, mappedBy = "temperature")
+    public List<Fluid> getFluids() {
+        return fluids;
+    }
+
+    public void setFluids(List<Fluid> fluids) {
+        this.fluids = fluids;
+    }
+
     
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Temperature)) {
             return false;
         }

@@ -7,6 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
+import java.util.List;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 
 @Entity
 @Table(name="capacity")
@@ -14,6 +18,7 @@ public class Capacity implements Serializable {
     
     private int id;
     private int capacityName;
+    private List<Fluid> fluids;
     
     @Id
     @Column(name = "idcapacity")
@@ -34,7 +39,17 @@ public class Capacity implements Serializable {
     public void setCapacityName(int capacityName) {
         this.capacityName = capacityName;
     }
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true, mappedBy = "capacity")
+    public List<Fluid> getFluids() {
+        return fluids;
+    }
+
+    public void setFluids(List<Fluid> fluids) {
+        this.fluids = fluids;
+    }
     
+      
     @Override
     public boolean equals(Object object) {
         if (!(object instanceof Capacity)) {
