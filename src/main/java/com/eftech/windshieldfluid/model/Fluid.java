@@ -10,9 +10,11 @@ import javax.persistence.Column;
 import javax.validation.constraints.Size;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 
 @Entity
 @Table(name="fluid")
+@NamedQuery(name="Fluid.getAll", query = "select c from Fluid c")
 public class Fluid implements Serializable {
    
     private int id;

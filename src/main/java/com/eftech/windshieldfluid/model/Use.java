@@ -12,9 +12,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import java.util.List;
+import javax.persistence.NamedQuery;
 
 @Entity
-@Table(name="use")
+@Table(name="uset")
+@NamedQuery(name="Use.getAll", query = "select c from Use c")
 public class Use implements Serializable {
     
     private int id;
@@ -33,7 +35,7 @@ public class Use implements Serializable {
     }
 
     @Size(min=2, max=45)
-    @Column(name = "use", nullable = false)
+    @Column(name = "name", nullable = false)
     public String getUseName() {
         return useName;
     }

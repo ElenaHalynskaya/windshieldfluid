@@ -11,9 +11,11 @@ import java.util.List;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
+import javax.persistence.NamedQuery;
 
 @Entity
 @Table(name="temperature")
+@NamedQuery(name="Temperature.getAll", query = "select c from Temperature c")
 public class Temperature implements Serializable {
    
     private int id;

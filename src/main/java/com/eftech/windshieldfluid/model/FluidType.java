@@ -12,9 +12,11 @@ import java.util.List;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
+import javax.persistence.NamedQuery;
 
 @Entity
 @Table(name="fluidtype")
+@NamedQuery(name="Fluidtype.getAll", query = "select c from FluidType c")
 public class FluidType implements Serializable {
    
     private int id;

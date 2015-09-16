@@ -11,9 +11,12 @@ import java.util.List;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
 @Table(name="capacity")
+@NamedQuery(name="Capacity.getAll", query = "select c from Capacity c")
 public class Capacity implements Serializable {
     
     private int id;

@@ -12,9 +12,11 @@ import java.util.List;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
+import javax.persistence.NamedQuery;
 
-@Entity
+@Entity  
 @Table(name="manufacturer")
+@NamedQuery(name="Manufacturer.getAll", query = "select c from Manufacturer c")
 public class Manufacturer implements Serializable {
     
     private int id;
