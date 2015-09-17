@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AppController {
     
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+   @RequestMapping(value = "/", method = RequestMethod.GET)
    public String index() {
-       //map.put("msg", "Hello Spring 4 Web MVC!");
        return "index";
    }
 }

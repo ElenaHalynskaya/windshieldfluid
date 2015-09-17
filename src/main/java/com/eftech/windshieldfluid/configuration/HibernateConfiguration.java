@@ -2,7 +2,6 @@ package com.eftech.windshieldfluid.configuration;
 
 import java.util.Properties;
 import javax.sql.DataSource;
-//import org.hibernate.ejb.HibernatePersistence;
 import javax.persistence.Persistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

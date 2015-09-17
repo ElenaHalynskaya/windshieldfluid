@@ -19,21 +19,22 @@ import javax.persistence.NamedQuery;
 @NamedQuery(name="Capacity.getAll", query = "select c from Capacity c")
 public class Capacity implements Serializable {
     
-    private int id;
+    private Long id;
     private int capacityName;
     private List<Fluid> fluids;
     
     @Id
     @Column(name = "idcapacity")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
+    
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
-    
+
     @Column(name = "capacitycol", nullable = false)
     public int getCapacityName() {
         return capacityName;
