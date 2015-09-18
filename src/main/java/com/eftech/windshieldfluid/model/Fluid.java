@@ -17,7 +17,7 @@ import javax.persistence.NamedQuery;
 @NamedQuery(name="Fluid.getAll", query = "select c from Fluid c")
 public class Fluid implements Serializable {
    
-    private int id;
+    private Long id;
     private String fluidName;
     private String pictureName;
     private Capacity capacity;
@@ -31,13 +31,14 @@ public class Fluid implements Serializable {
     @Id
     @Column(name = "idfluid")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
+    public Long getId() {
         return id;
     }
-    
-    public void setId(int id) {
+
+    public void setId(Long id) {
         this.id = id;
     }
+    
     
     @Size(min=3, max=100)
     @Column(name = "name", nullable = false)

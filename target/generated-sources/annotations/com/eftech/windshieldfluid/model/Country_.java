@@ -9,7 +9,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Country.class)
 public abstract class Country_ {
 
-	public static volatile SingularAttribute<Country, Integer> id;
+	public static volatile SingularAttribute<Country, Long> id;
 	public static volatile SingularAttribute<Country, String> countryName;
 	public static volatile SingularAttribute<Country, String> pictureName;
 	public static volatile ListAttribute<Country, Fluid> fluids;

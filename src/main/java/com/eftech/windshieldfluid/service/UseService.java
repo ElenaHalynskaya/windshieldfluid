@@ -4,9 +4,10 @@ import java.util.List;
 import com.eftech.windshieldfluid.model.Use;
 
 public interface UseService {
-    public Use create(Use use);
+   // public Use create(Use use);
+     public Use save(Use use);
     public void delete(Use use);
     public List<Use> findAll();
-    public Use update(Use use);
-    public Use findById(int id);
+   // public Use update(Use use);
+    public Use findById(Long id);
 }

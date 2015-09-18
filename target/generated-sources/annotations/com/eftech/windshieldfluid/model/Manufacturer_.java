@@ -11,7 +11,7 @@ public abstract class Manufacturer_ {
 
 	public static volatile SingularAttribute<Manufacturer, String> discription;
 	public static volatile SingularAttribute<Manufacturer, String> manufacturerName;
-	public static volatile SingularAttribute<Manufacturer, Integer> id;
+	public static volatile SingularAttribute<Manufacturer, Long> id;
 	public static volatile SingularAttribute<Manufacturer, String> pictureName;
 	public static volatile ListAttribute<Manufacturer, Fluid> fluids;
 

@@ -3,6 +3,8 @@ package com.eftech.windshieldfluid.service;
 import java.util.List;
 
 import com.eftech.windshieldfluid.model.Use;
+import com.eftech.windshieldfluid.repository.UseRepository;
+import com.google.common.collect.Lists;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
@@ -13,10 +15,33 @@ import org.springframework.data.repository.Repository;
 import javax.persistence.TypedQuery;
 
 
-@Service
+@Service("serviceUse")
 @Transactional
 public class UseServiceImpl implements UseService{
     
+    private UseRepository useRepository;
+ 
+	@Transactional(readOnly=true)
+        @Override
+	public List<Use> findAll() {
+            return Lists.newArrayList(useRepository.findAll());
+        }
+
+	@Transactional(readOnly=true)
+        @Override
+	public Use findById(Long id) {
+		return useRepository.findOne(id);
+	}
+        @Override
+	public Use save(Use use) {
+		return useRepository.save(use);
+	}
+
+	@Override
+	public void delete(Use use) {
+		useRepository.delete(use);
+	}
+    /*
      @PersistenceContext
     private final EntityManager em = Persistence.createEntityManagerFactory("com.eftech_WindshieldFluid_war_1.0-SNAPSHOTPU").createEntityManager();
     
@@ -58,5 +83,5 @@ public class UseServiceImpl implements UseService{
     public List<Use> findAll(){
         List<Use> uses = em.createNamedQuery("Use.findAll",Use.class).getResultList();
         return uses;
-    }
+    }*/
 }

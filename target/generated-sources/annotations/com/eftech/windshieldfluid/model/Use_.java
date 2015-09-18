@@ -10,7 +10,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Use_ {
 
 	public static volatile SingularAttribute<Use, String> useName;
-	public static volatile SingularAttribute<Use, Integer> id;
+	public static volatile SingularAttribute<Use, Long> id;
 	public static volatile ListAttribute<Use, Fluid> fluids;
 
 }

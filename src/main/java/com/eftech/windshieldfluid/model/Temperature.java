@@ -18,7 +18,7 @@ import javax.persistence.NamedQuery;
 @NamedQuery(name="Temperature.getAll", query = "select c from Temperature c")
 public class Temperature implements Serializable {
    
-    private int id;
+    private Long id;
     private int temperatureMin;
     private int temperatureMax;
     private List<Fluid> fluids;
@@ -26,14 +26,15 @@ public class Temperature implements Serializable {
     @Id
     @Column(name = "idtemperature")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
+    
     @Column(name = "temperatureMin", nullable = false)
     public int getTemperatureMin() {
         return temperatureMin;

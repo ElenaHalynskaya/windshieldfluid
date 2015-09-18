@@ -19,21 +19,22 @@ import javax.persistence.NamedQuery;
 @NamedQuery(name="Fluidtype.getAll", query = "select c from FluidType c")
 public class FluidType implements Serializable {
    
-    private int id;
+    private Long id;
     private String type;
     private List<Fluid> fluids;
 
     @Id
     @Column(name = "idfluidtype")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
-
+    
+    
     @Size(min=2, max=45)
     @Column(name = "type", nullable = false)
     public String getType() {

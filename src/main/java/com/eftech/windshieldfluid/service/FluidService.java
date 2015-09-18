@@ -4,9 +4,10 @@ import java.util.List;
 import com.eftech.windshieldfluid.model.Fluid;
 
 public interface FluidService {
-    public Fluid create(Fluid fluid);
+    //public Fluid create(Fluid fluid);
+    public Fluid save(Fluid fluid);
     public void delete(Fluid fluid);
     public List<Fluid> findAll();
-    public Fluid update(Fluid fluid);
-    public Fluid findById(int id);
+   // public Fluid update(Fluid fluid);
+    public Fluid findById(Long id);
 }

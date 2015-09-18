@@ -11,7 +11,7 @@ public abstract class Temperature_ {
 
 	public static volatile SingularAttribute<Temperature, Integer> temperatureMax;
 	public static volatile SingularAttribute<Temperature, Integer> temperatureMin;
-	public static volatile SingularAttribute<Temperature, Integer> id;
+	public static volatile SingularAttribute<Temperature, Long> id;
 	public static volatile ListAttribute<Temperature, Fluid> fluids;
 
 }

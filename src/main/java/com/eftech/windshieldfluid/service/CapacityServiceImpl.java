@@ -24,12 +24,12 @@ public class CapacityServiceImpl implements CapacityService{
         
        // @Autowired
 	private CapacityRepository capacityRepository;
-
+ 
 	@Transactional(readOnly=true)
         @Override
 	public List<Capacity> findAll() {
-		return Lists.newArrayList(capacityRepository.findAll());
-	}
+            return Lists.newArrayList(capacityRepository.findAll());
+        }
 
 	@Transactional(readOnly=true)
         @Override

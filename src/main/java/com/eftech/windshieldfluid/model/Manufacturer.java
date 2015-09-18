@@ -19,7 +19,7 @@ import javax.persistence.NamedQuery;
 @NamedQuery(name="Manufacturer.getAll", query = "select c from Manufacturer c")
 public class Manufacturer implements Serializable {
     
-    private int id;
+    private Long id;
     private String manufacturerName;
     private String discription;
     private String pictureName;
@@ -28,11 +28,11 @@ public class Manufacturer implements Serializable {
     @Id
     @Column(name = "idmanufacturer")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

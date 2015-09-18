@@ -5,7 +5,8 @@ import java.util.List;
 import com.eftech.windshieldfluid.model.Manufacturer;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.eftech.windshieldfluid.model.Capacity;
+import com.eftech.windshieldfluid.repository.ManufacturerRepository;
+import com.google.common.collect.Lists;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -13,11 +14,33 @@ import javax.persistence.PersistenceContext;
 import org.springframework.data.repository.Repository;
 import javax.persistence.TypedQuery;
 
-@Service
+@Service("serviceManufacturer")
 @Transactional
 public class ManufacturerServiceImpl implements ManufacturerService{
     
-    @PersistenceContext
+    private ManufacturerRepository manufacturerRepository;
+ 
+	@Transactional(readOnly=true)
+        @Override
+	public List<Manufacturer> findAll() {
+            return Lists.newArrayList(manufacturerRepository.findAll());
+        }
+
+	@Transactional(readOnly=true)
+        @Override
+	public Manufacturer findById(Long id) {
+		return manufacturerRepository.findOne(id);
+	}
+        @Override
+	public Manufacturer save(Manufacturer manufacturer) {
+		return manufacturerRepository.save(manufacturer);
+	}
+
+	@Override
+	public void delete(Manufacturer manufacturer) {
+		manufacturerRepository.delete(manufacturer);
+	}
+    /*@PersistenceContext
     private final EntityManager em = Persistence.createEntityManagerFactory("com.eftech_WindshieldFluid_war_1.0-SNAPSHOTPU").createEntityManager();
     
     @Override
@@ -58,6 +81,6 @@ public class ManufacturerServiceImpl implements ManufacturerService{
     public List<Manufacturer> findAll(){
         List<Manufacturer> manufacturers = em.createNamedQuery("Manufacturer.findAll",Manufacturer.class).getResultList();
         return manufacturers;
-    }
+    }*/
 
 }

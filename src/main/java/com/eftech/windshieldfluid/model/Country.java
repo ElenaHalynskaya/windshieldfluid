@@ -21,21 +21,22 @@ import javax.persistence.NamedQuery;
 @NamedQuery(name="Country.getAll", query = "select c from Country c")
 public class Country implements Serializable {
     
-    private int id;
+    private Long id;
     private String countryName;
     private String pictureName;
     private List<Fluid> fluids;
     
     @Id
     @Column(name = "idcountry")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int getId() {
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
+    
     
     @Size(min=2, max=100)
     @Column(name = "country", nullable = false)

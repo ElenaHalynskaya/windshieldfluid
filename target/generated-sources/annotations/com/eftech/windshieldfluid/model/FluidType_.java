@@ -9,7 +9,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(FluidType.class)
 public abstract class FluidType_ {
 
-	public static volatile SingularAttribute<FluidType, Integer> id;
+	public static volatile SingularAttribute<FluidType, Long> id;
 	public static volatile SingularAttribute<FluidType, String> type;
 	public static volatile ListAttribute<FluidType, Fluid> fluids;
 

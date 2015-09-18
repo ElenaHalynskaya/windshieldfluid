@@ -2,6 +2,7 @@ package com.eftech.windshieldfluid.configuration;
 
 import java.util.Properties;
 import javax.sql.DataSource;
+//import org.hibernate.ejb.HibernatePersistence;
 import javax.persistence.Persistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +40,7 @@ public class HibernateConfiguration {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 	LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 	entityManagerFactoryBean.setDataSource(dataSource());
-	//entityManagerFactoryBean.setPersistenceProviderClass(Persistence.class);
+	//entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistence.class);
 	entityManagerFactoryBean.setPackagesToScan(new String[] { "com.iftech.windshieldfluid.model" });
 	
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
