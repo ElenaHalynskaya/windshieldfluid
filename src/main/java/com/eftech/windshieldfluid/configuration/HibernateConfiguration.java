@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -18,9 +19,9 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "com.iftech.windshieldfluid.configuration" })
+@EnableJpaRepositories(basePackages = {"com.eftech.windshieldfluid.repository"})
+//@ComponentScan({ "com.iftech.windshieldfluid.configuration" })
 @PropertySource(value = { "classpath:application.properties" })
-
 public class HibernateConfiguration {
     
     @Autowired
@@ -41,7 +42,7 @@ public class HibernateConfiguration {
 	LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 	entityManagerFactoryBean.setDataSource(dataSource());
 	//entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistence.class);
-	entityManagerFactoryBean.setPackagesToScan(new String[] { "com.iftech.windshieldfluid.model" });
+	entityManagerFactoryBean.setPackagesToScan(new String[] { "com.eftech.windshieldfluid.model" });
 	
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);

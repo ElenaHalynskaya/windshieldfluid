@@ -8,24 +8,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.eftech.windshieldfluid.model.Capacity;
 import com.eftech.windshieldfluid.service.CapacityService;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
+//@ComponentScan("com.eftech.windshieldfluid.service")
 @RequestMapping("/capacities")
 public class CapacityController {
     
         @Autowired
-	private CapacityService capacityService;
+        private CapacityService capacityService;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+        @RequestMapping(value = "/", method = RequestMethod.GET)
 	public String list(Model uiModel) {
+		List<Capacity> capacities = capacityService.findAll();
+                uiModel.addAttribute("capacities", capacities);
+                return "admin/capacity";
+	}
+        
+        @RequestMapping(value= "/add", method = RequestMethod.POST)
+	public String addCapacity(@ModelAttribute("capacity") Capacity capacity){
+		this.capacityService.save(capacity);
 		
-		//List<Capacity> capacities = capacityService.findAll();
-		//uiModel.addAttribute("capacities", capacities);
-                Capacity c = new Capacity();
-                c.setCapacityName(123);
-                capacityService.save(c);
-                uiModel.addAttribute("capacities", c);
-		return "admin/capacity";
+		return "redirect:/";
+		
 	}
 }

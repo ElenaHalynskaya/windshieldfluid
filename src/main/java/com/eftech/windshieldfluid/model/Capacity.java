@@ -20,13 +20,12 @@ import javax.persistence.NamedQuery;
 public class Capacity implements Serializable {
     
     private Long id;
-    private int capacityName;
+    private int capacityCol;
     private List<Fluid> fluids;
     
     @Id
     @Column(name = "idcapacity")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
     public Long getId() {
         return id;
     }
@@ -36,14 +35,14 @@ public class Capacity implements Serializable {
     }
 
     @Column(name = "capacitycol", nullable = false)
-    public int getCapacityName() {
-        return capacityName;
+    public int getCapacityCol() {
+        return capacityCol;
     }
     
-    public void setCapacityName(int capacityName) {
-        this.capacityName = capacityName;
+    public void setCapacityCol(int capacityCol) {
+        this.capacityCol = capacityCol;
     }
-
+  
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true, mappedBy = "capacity")
     public List<Fluid> getFluids() {
         return fluids;
@@ -60,7 +59,7 @@ public class Capacity implements Serializable {
             return false;
         }
         Capacity other = (Capacity) object;
-        if ((this.id != other.id) || (this.capacityName != other.capacityName)) {
+        if ((this.id != other.id) || (this.capacityCol != other.capacityCol)) {
             return false;
         }
         return true;
@@ -68,7 +67,7 @@ public class Capacity implements Serializable {
 
     @Override
     public String toString() {
-        return "com.eftech.windshieldfluid.model.Capacity[ id=" + id + ", capacityName=" + capacityName + " ]";
+        return "com.eftech.windshieldfluid.model.Capacity[ id=" + id + ", capacityCol=" + capacityCol + " ]";
     }
     
 }
