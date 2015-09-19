@@ -22,18 +22,20 @@ public class CapacityController {
         @Autowired
         private CapacityService capacityService;
 	
-        @RequestMapping(value = "/", method = RequestMethod.GET)
+        @RequestMapping(value = {"/","listCapacities"}, method = RequestMethod.GET)
 	public String list(Model uiModel) {
 		List<Capacity> capacities = capacityService.findAll();
                 uiModel.addAttribute("capacities", capacities);
+                uiModel.addAttribute("capacity",new Capacity());
                 return "admin/capacity";
 	}
         
-        @RequestMapping(value= "/add", method = RequestMethod.POST)
-	public String addCapacity(@ModelAttribute("capacity") Capacity capacity){
+        @RequestMapping(value= "/save", method = RequestMethod.POST)
+	public String saveCapacity(@ModelAttribute("capacity") Capacity capacity){
 		this.capacityService.save(capacity);
 		
-		return "redirect:/";
+		return "redirect:listCapacities";
+                
 		
 	}
 }

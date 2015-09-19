@@ -25,41 +25,15 @@
 		</tr>
 	</c:forEach>
 	</table>
-</c:if>
-        <h1>
-	Add a Capacity
-</h1>
-
-<div>
-    
-    
-<form:form action="add" method="post" commandName="capacity">
-    <table>
-        <tr>
-            <td>
-		<form:label path="id">
-                    <spring:message text="ID"/>
-		</form:label>
-            </td>
-            <td>
-                <form:input path="id" readonly="true" size="8"  disabled="true" />
-                    <form:hidden path="id" />
-            </td> 
-	</tr>
-	<tr>
-            <td>
-		<form:label path="capacityCol">
-			<spring:message text="Capacity"/>
-		</form:label>
-            </td>
-            <td>
-		<form:input path="capacityCol" />
-            </td> 
-	</tr>
-    </table>
-           <input type="submit" value="Save"/>    
-            <input type="reset" value="Clear"/>    
-</form:form>
-</div>
+        </c:if>
+        <h1>Add a Capacity</h1>
+        <c:url var="actionUrl" value="save" />
+        <form:form id="capacityForm" commanName="capacity" method="post" action="${aciontUrl}">
+            <form:label path="id">Id</form:label>
+            <form:input path="id"></form:input>
+            <form:label path="capacity">Id</form:label>
+            <form:input path="capacityCol"></form:input>
+            <input type="submit" value="Save"> 
+        </form:form>
 </body>
 </html>

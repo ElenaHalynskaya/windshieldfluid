@@ -12,7 +12,7 @@
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.0.6.RELEASE</spring.version>
+        <spring.version>4.2.1.RELEASE</spring.version>
         <jstl.version>1.2</jstl.version>
         <javax.servlet.version>3.0.1</javax.servlet.version>
         <hibernate.version>4.3.6.Final</hibernate.version>
@@ -64,7 +64,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>3.2.2.RELEASE</version>
+            <version>${spring.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
