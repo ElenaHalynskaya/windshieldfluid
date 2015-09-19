@@ -21,17 +21,18 @@
 		<tr>
 			<td>${capacity.id}</td>
 			<td>${capacity.capacityCol}</td>
-			
+                        <td><a href="<c:url value='edit/${capacity.id}' />" >Edit</a></td>
+			<td><a href="<c:url value='remove/${capacity.id}' />" >Delete</a></td>
 		</tr>
 	</c:forEach>
 	</table>
         </c:if>
         <h1>Add a Capacity</h1>
-        <c:url var="actionUrl" value="save" />
-        <form:form id="capacityForm" commanName="capacity" method="post" action="${aciontUrl}">
+        <c:url var="actionUrl" value="/capacities/save" />
+        <form:form modelAttribute="capacity" method="post" action="${actionUrl}">
             <form:label path="id">Id</form:label>
             <form:input path="id"></form:input>
-            <form:label path="capacity">Id</form:label>
+            <form:label path="capacityCol">CapacityCol</form:label>
             <form:input path="capacityCol"></form:input>
             <input type="submit" value="Save"> 
         </form:form>

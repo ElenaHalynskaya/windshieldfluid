@@ -43,7 +43,8 @@ public class Capacity implements Serializable {
         this.capacityCol = capacityCol;
     }
   
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true, mappedBy = "capacity")
+    //@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true, mappedBy = "capacity")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "capacity")
     public List<Fluid> getFluids() {
         return fluids;
     }

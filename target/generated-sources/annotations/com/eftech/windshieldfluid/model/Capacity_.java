@@ -9,8 +9,8 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Capacity.class)
 public abstract class Capacity_ {
 
-	public static volatile SingularAttribute<Capacity, Integer> capacityName;
 	public static volatile SingularAttribute<Capacity, Long> id;
+	public static volatile SingularAttribute<Capacity, Integer> capacityCol;
 	public static volatile ListAttribute<Capacity, Fluid> fluids;
 
 }
