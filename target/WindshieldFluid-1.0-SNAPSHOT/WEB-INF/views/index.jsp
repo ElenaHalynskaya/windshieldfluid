@@ -10,6 +10,13 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <a href="<c:url value='capacities/' />" >Capacities</a>
+       <ul> 
+           <li><a href="<c:url value='capacities/' />" >Capacities</a></li>
+           <li><a href="<c:url value='countries/' />" >Countries</a></li>
+           <li><a href="<c:url value='fluidtypes/' />" >Fluid types</a></li>
+           <li><a href="<c:url value='manufacturers/' />" >Manufacturers</a></li>
+           <li><a href="<c:url value='temperatures/' />" >Temperatures</a></li>
+           <li><a href="<c:url value='uses/' />" >Uses</a></li>
+        </ul>
     </body>
 </html>

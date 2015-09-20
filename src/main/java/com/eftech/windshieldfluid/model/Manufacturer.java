@@ -21,7 +21,7 @@ public class Manufacturer implements Serializable {
     
     private Long id;
     private String manufacturerName;
-    private String discription;
+    private String description;
     private String pictureName;
     private List<Fluid> fluids;
 
@@ -47,13 +47,13 @@ public class Manufacturer implements Serializable {
     }
 
     @Size(min=2)
-    @Column(name = "discription", nullable = false)
-    public String getDiscription() {
-        return discription;
+    @Column(name = "description", nullable = false)
+    public String getDescription() {
+        return description;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Size(min=1, max=100)
@@ -66,7 +66,7 @@ public class Manufacturer implements Serializable {
         this.pictureName = pictureName;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true, mappedBy = "manufacturer")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "manufacturer")
     public List<Fluid> getFluids() {
         return fluids;
     }
@@ -83,7 +83,7 @@ public class Manufacturer implements Serializable {
         }
         Manufacturer other = (Manufacturer) object;
         if ((this.id != other.id) || (this.manufacturerName != other.manufacturerName) || 
-           (this.discription != other.discription)|| (this.pictureName != other.pictureName)) {
+           (this.description != other.description)|| (this.pictureName != other.pictureName)) {
             return false;
         }    
         return true;
@@ -92,7 +92,7 @@ public class Manufacturer implements Serializable {
     @Override
     public String toString() {
         return "com.eftech.windshieldfluid.model.Manufacturer[ id=" + id + ", name=" + manufacturerName + 
-                ", discription=" + discription + ", pictureName=" + pictureName +  " ]";
+                ", description=" + description + ", pictureName=" + pictureName +  " ]";
     }
     
 }

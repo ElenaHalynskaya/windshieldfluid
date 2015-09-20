@@ -1,25 +1,20 @@
 package com.eftech.windshieldfluid.service;
 
-import com.eftech.windshieldfluid.model.Fluid;
 import java.util.List;
-
 import com.eftech.windshieldfluid.model.FluidType;
 import com.eftech.windshieldfluid.repository.FluidTypeRepository;
 import com.google.common.collect.Lists;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import org.springframework.data.repository.Repository;
-import javax.persistence.TypedQuery;
+
 
 @Service
 @Transactional
 public class FluidtypeServiceImpl implements FluidtypeService{
     
-    private FluidTypeRepository fluidtypeRepository;
+        @Autowired
+        private FluidTypeRepository fluidtypeRepository;
  
 	@Transactional(readOnly=true)
         @Override

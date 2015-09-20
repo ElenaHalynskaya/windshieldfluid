@@ -7,18 +7,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.eftech.windshieldfluid.repository.ManufacturerRepository;
 import com.google.common.collect.Lists;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import org.springframework.data.repository.Repository;
-import javax.persistence.TypedQuery;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 @Transactional
 public class ManufacturerServiceImpl implements ManufacturerService{
     
-    private ManufacturerRepository manufacturerRepository;
+       @Autowired
+        private ManufacturerRepository manufacturerRepository;
  
 	@Transactional(readOnly=true)
         @Override

@@ -12,12 +12,14 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import org.springframework.data.repository.Repository;
 import javax.persistence.TypedQuery;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Service
 @Transactional
 public class CountryServiceImpl implements CountryService{
         
+        @Autowired
         private CountryRepository countryRepository;
  
 	@Transactional(readOnly=true)

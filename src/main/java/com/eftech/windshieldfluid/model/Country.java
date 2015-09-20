@@ -58,7 +58,7 @@ public class Country implements Serializable {
         this.pictureName = pictureName;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true, mappedBy = "country")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "country")
     public List<Fluid> getFluids() {
         return fluids;
     }

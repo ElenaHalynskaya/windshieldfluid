@@ -30,8 +30,9 @@
         <h1>Add a Capacity</h1>
         <c:url var="actionUrl" value="/capacities/save" />
         <form:form modelAttribute="capacity" method="post" action="${actionUrl}">
-            <form:label path="id">Id</form:label>
+            
             <form:input path="id"></form:input>
+            <form:hidden path="id" />
             <form:label path="capacityCol">CapacityCol</form:label>
             <form:input path="capacityCol"></form:input>
             <input type="submit" value="Save"> 

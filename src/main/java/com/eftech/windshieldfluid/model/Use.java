@@ -44,7 +44,7 @@ public class Use implements Serializable {
         this.useName = useName;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true, mappedBy = "use")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "use")
     public List<Fluid> getFluids() {
         return fluids;
     }

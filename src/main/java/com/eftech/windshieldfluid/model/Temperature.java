@@ -53,7 +53,7 @@ public class Temperature implements Serializable {
         this.temperatureMax = temperatureMax;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true, mappedBy = "temperature")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "temperature")
     public List<Fluid> getFluids() {
         return fluids;
     }

@@ -45,7 +45,7 @@ public class FluidType implements Serializable {
         this.type = type;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval=true, mappedBy = "fluidType")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "fluidType")
     public List<Fluid> getFluids() {
         return fluids;
     }

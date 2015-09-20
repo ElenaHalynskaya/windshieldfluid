@@ -13,13 +13,15 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import org.springframework.data.repository.Repository;
 import javax.persistence.TypedQuery;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Service
 @Transactional
 public class UseServiceImpl implements UseService{
     
-    private UseRepository useRepository;
+        @Autowired
+        private UseRepository useRepository;
  
 	@Transactional(readOnly=true)
         @Override

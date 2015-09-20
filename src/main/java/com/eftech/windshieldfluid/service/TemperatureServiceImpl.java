@@ -4,9 +4,7 @@ import com.eftech.windshieldfluid.model.Temperature;
 import com.eftech.windshieldfluid.repository.TemperatureRepository;
 import com.google.common.collect.Lists;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class TemperatureServiceImpl implements TemperatureService{
     
-    private TemperatureRepository temperatureRepository;
+        @Autowired
+        private TemperatureRepository temperatureRepository;
  
 	@Transactional(readOnly=true)
         @Override
