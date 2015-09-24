@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.NamedQuery;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity  
 @Table(name="manufacturer")
@@ -36,7 +37,8 @@ public class Manufacturer implements Serializable {
         this.id = id;
     }
 
-    @Size(min=2, max=100)
+    @NotBlank(message="The field is required")
+  //  @Size(min=2, max=100)
     @Column(name = "manufacturer", nullable = false)
     public String getManufacturerName() {
         return manufacturerName;
@@ -46,6 +48,7 @@ public class Manufacturer implements Serializable {
         this.manufacturerName = manufacturerName;
     }
 
+    @NotBlank(message="The field is required")
     @Size(min=2)
     @Column(name = "description", nullable = false)
     public String getDescription() {
@@ -56,6 +59,7 @@ public class Manufacturer implements Serializable {
         this.description = description;
     }
 
+    @NotBlank(message="The field is required")
     @Size(min=1, max=100)
     @Column(name = "picturename", nullable = false)
     public String getPictureName() {

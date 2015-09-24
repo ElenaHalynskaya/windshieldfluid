@@ -32,12 +32,15 @@
         <h1>Add a Tempereature</h1>
         <c:url var="actionUrl" value="/temperatures/save" />
         <form:form modelAttribute="temperature" method="post" action="${actionUrl}">
-            
             <form:hidden path="id" />
-            <form:label path="temperatureMin">CapacityCol</form:label>
+            <form:label path="temperatureMin">Min</form:label>
             <form:input path="temperatureMin"></form:input>
-            <form:label path="temperatureMax">CapacityCol</form:label>
+            <form:errors path="temperatureMin" />
+            <br>
+            <form:label path="temperatureMax">Max</form:label>
             <form:input path="temperatureMax"></form:input>
+            <form:errors path="temperatureMax" />
+            <br>
             <input type="submit" value="Save"> 
         </form:form>
     </body>

@@ -11,6 +11,10 @@ import javax.validation.constraints.Size;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="fluid")
@@ -26,7 +30,7 @@ public class Fluid implements Serializable {
     private Manufacturer manufacturer;
     private Temperature temperature;
     private Use use;
-    private String price;
+    private int price;
     
     @Id
     @Column(name = "idfluid")
@@ -39,7 +43,7 @@ public class Fluid implements Serializable {
         this.id = id;
     }
     
-    
+    @NotBlank(message="The field is required")
     @Size(min=3, max=100)
     @Column(name = "name", nullable = false)
     public String getFluidName() {
@@ -50,6 +54,7 @@ public class Fluid implements Serializable {
         this.fluidName = fluidName;
     }
 
+    @NotBlank(message="The field is required")
     @Size(min=3, max=100)
     @Column(name = "picturename", nullable = false)
     public String getPictureName() {
@@ -60,12 +65,15 @@ public class Fluid implements Serializable {
         this.pictureName = pictureName;
     }
     
+    @NotNull(message="The field is required")
+    //@Min(value = 1)
+    //@Max(value = 100000000)
     @Column(name = "price", nullable = false)
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

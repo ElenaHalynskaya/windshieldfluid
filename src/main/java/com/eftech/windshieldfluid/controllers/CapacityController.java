@@ -8,13 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.eftech.windshieldfluid.model.Capacity;
 import com.eftech.windshieldfluid.service.CapacityService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Service;
+import javax.validation.Valid;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/capacities")
@@ -32,8 +30,14 @@ public class CapacityController {
 	}
         
         @RequestMapping(value= "/save", method = RequestMethod.POST)
-	public String save(@ModelAttribute("capacity") Capacity capacity){
-            
+	public String save(@Valid Capacity capacity, BindingResult bindingResult, Model uiModel){
+            if (bindingResult.hasErrors())
+            {
+                List<Capacity> capacities = capacityService.findAll();
+                uiModel.addAttribute("capacities", capacities);
+                uiModel.addAttribute("capacity",capacity);
+                return "admin/capacity";
+            }
             capacityService.save(capacity);
             return "redirect:/capacities/";
  	}

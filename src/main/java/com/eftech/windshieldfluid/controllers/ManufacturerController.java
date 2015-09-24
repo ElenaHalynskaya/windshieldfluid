@@ -3,9 +3,11 @@ package com.eftech.windshieldfluid.controllers;
 import com.eftech.windshieldfluid.model.Manufacturer;
 import com.eftech.windshieldfluid.service.ManufacturerService;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +29,14 @@ public class ManufacturerController {
 	}
         
         @RequestMapping(value= "/save", method = RequestMethod.POST)
-	public String save(@ModelAttribute("manufacturer") Manufacturer manufacturer){
-            
+	public String save(@Valid Manufacturer manufacturer, BindingResult bindingResult, Model uiModel){
+            if (bindingResult.hasErrors())
+            {
+                List<Manufacturer> manufacturers = manufacturerService.findAll();
+                uiModel.addAttribute("manufacturers", manufacturers);
+                uiModel.addAttribute("manufacturer",manufacturer);
+                return "admin/manufacturer";                
+            }
             manufacturerService.save(manufacturer);
             return "redirect:/manufacturers/";
  	}

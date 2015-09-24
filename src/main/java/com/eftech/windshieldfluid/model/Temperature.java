@@ -12,6 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.NamedQuery;
+import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="temperature")
@@ -19,9 +23,10 @@ import javax.persistence.NamedQuery;
 public class Temperature implements Serializable {
    
     private Long id;
-    private int temperatureMin;
-    private int temperatureMax;
+    private Integer temperatureMin;
+    private Integer temperatureMax;
     private List<Fluid> fluids;
+    private String range;
 
     @Id
     @Column(name = "idtemperature")
@@ -34,22 +39,27 @@ public class Temperature implements Serializable {
         this.id = id;
     }
 
-    
+    @NotNull(message="The field is required")
+    @Min(value = -40)
+    @Max(value = 40)
     @Column(name = "temperatureMin", nullable = false)
-    public int getTemperatureMin() {
+    public Integer getTemperatureMin() {
         return temperatureMin;
     }
 
-    public void setTemperatureMin(int temperatureMin) {
+    public void setTemperatureMin(Integer temperatureMin) {
         this.temperatureMin = temperatureMin;
     }
 
+    @Min(value = 0)
+    @Max(value = 100)
+    @NotNull(message="The field is required")
     @Column(name = "temperatureMax", nullable = false)
-    public int getTemperatureMax() {
+    public Integer getTemperatureMax() {
         return temperatureMax;
     }
 
-    public void setTemperatureMax(int temperatureMax) {
+    public void setTemperatureMax(Integer temperatureMax) {
         this.temperatureMax = temperatureMax;
     }
 
@@ -62,6 +72,18 @@ public class Temperature implements Serializable {
         this.fluids = fluids;
     }
 
+    @Transient
+    public String getRange() {
+        this.range = Integer.toString(temperatureMin) + " - " + Integer.toString(temperatureMax);
+        return range;
+    }
+
+    public void setRange(String range) {
+        this.range = range;
+    }
+
+    
+    
     
     @Override
     public boolean equals(Object object) {

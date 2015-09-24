@@ -13,6 +13,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="capacity")
@@ -20,7 +24,7 @@ import javax.persistence.NamedQuery;
 public class Capacity implements Serializable {
     
     private Long id;
-    private int capacityCol;
+    private Integer capacityCol;
     private List<Fluid> fluids;
     
     @Id
@@ -33,13 +37,15 @@ public class Capacity implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
+    
+    @NotNull(message="The field is required")
+    @Min(value = 1, message = "The value must be greater than 0")
     @Column(name = "capacitycol", nullable = false)
-    public int getCapacityCol() {
+    public Integer getCapacityCol() {
         return capacityCol;
     }
     
-    public void setCapacityCol(int capacityCol) {
+    public void setCapacityCol(Integer capacityCol) {
         this.capacityCol = capacityCol;
     }
   

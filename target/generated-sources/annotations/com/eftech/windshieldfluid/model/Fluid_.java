@@ -9,7 +9,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Fluid_ {
 
 	public static volatile SingularAttribute<Fluid, Country> country;
-	public static volatile SingularAttribute<Fluid, String> price;
+	public static volatile SingularAttribute<Fluid, Integer> price;
 	public static volatile SingularAttribute<Fluid, FluidType> fluidType;
 	public static volatile SingularAttribute<Fluid, Use> use;
 	public static volatile SingularAttribute<Fluid, Temperature> temperature;

@@ -13,6 +13,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import java.util.List;
 import javax.persistence.NamedQuery;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="uset")
@@ -34,6 +35,7 @@ public class Use implements Serializable {
         this.id = id;
     }
 
+    @NotBlank(message="The field is required")
     @Size(min=2, max=45)
     @Column(name = "name", nullable = false)
     public String getUseName() {

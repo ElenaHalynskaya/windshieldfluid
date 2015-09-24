@@ -5,9 +5,11 @@ import com.eftech.windshieldfluid.model.Use;
 import com.eftech.windshieldfluid.service.CapacityService;
 import com.eftech.windshieldfluid.service.UseService;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,8 +31,14 @@ public class UseController {
 	}
         
         @RequestMapping(value= "/save", method = RequestMethod.POST)
-	public String save(@ModelAttribute("use") Use use){
-            
+	public String save(@Valid Use use, BindingResult bindingResult, Model uiModel){
+             if (bindingResult.hasErrors())
+            {
+                List<Use> uses = useService.findAll();
+                uiModel.addAttribute("uses", uses);
+                uiModel.addAttribute("use", use);
+                return "admin/use";
+            }
             useService.save(use);
             return "redirect:/uses/";
  	}

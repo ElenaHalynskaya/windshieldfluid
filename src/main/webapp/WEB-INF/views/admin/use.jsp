@@ -34,6 +34,8 @@
             <form:hidden path="id" />
             <form:label path="useName">Use</form:label>
             <form:input path="useName"></form:input>
+            <form:errors path="useName" />
+            <br>
             <input type="submit" value="Save"> 
         </form:form>
     </body>

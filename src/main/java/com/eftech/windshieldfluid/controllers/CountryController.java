@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.eftech.windshieldfluid.model.Country;
 import com.eftech.windshieldfluid.service.CountryService;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -27,8 +29,14 @@ public class CountryController {
 	}
         
         @RequestMapping(value= "/save", method = RequestMethod.POST)
-	public String save(@ModelAttribute("country") Country country){
-            
+	public String save(@Valid Country country, BindingResult bindingResult, Model uiModel){
+            if (bindingResult.hasErrors())
+            {
+                List<Country> countries = countryService.findAll();
+                uiModel.addAttribute("countries", countries);
+                uiModel.addAttribute("country", country);
+                return "admin/country";
+            }
             countryService.save(country);
             return "redirect:/countries/";
  	}

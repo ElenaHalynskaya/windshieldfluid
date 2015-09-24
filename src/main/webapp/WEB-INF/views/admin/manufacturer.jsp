@@ -34,12 +34,19 @@
         <h1>Add a Manufacturer</h1>
         <c:url var="actionUrl" value="/manufacturers/save" />
         <form:form modelAttribute="manufacturer" method="post" action="${actionUrl}">
+            <form:hidden path="id" />
             <form:label path="manufacturerName">Name</form:label>
             <form:input path="manufacturerName"></form:input>
+            <form:errors path="manufacturerName" />
+            <br>
             <form:label path="description">Description</form:label>
             <form:input path="description"></form:input>
+            <form:errors path="description" />
+            <br>
             <form:label path="pictureName">Picture</form:label>
             <form:input path="pictureName"></form:input>
+            <form:errors path="pictureName" />
+            <br>
             <input type="submit" value="Save"> 
         </form:form>
     </body>

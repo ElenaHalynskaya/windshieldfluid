@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.NamedQuery;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Table(name="fluidtype")
@@ -34,7 +35,7 @@ public class FluidType implements Serializable {
         this.id = id;
     }
     
-    
+    @NotBlank(message="The field is required")
     @Size(min=2, max=45)
     @Column(name = "type", nullable = false)
     public String getType() {

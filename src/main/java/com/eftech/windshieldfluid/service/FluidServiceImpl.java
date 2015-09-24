@@ -6,18 +6,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.eftech.windshieldfluid.repository.FluidRepository;
 import com.google.common.collect.Lists;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
-import org.springframework.data.repository.Repository;
-import javax.persistence.TypedQuery;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 @Transactional
 public class FluidServiceImpl implements FluidService{
     
-     private FluidRepository fluidRepository;
+        @Autowired
+        private FluidRepository fluidRepository;
  
 	@Transactional(readOnly=true)
         @Override

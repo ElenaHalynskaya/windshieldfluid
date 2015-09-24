@@ -3,9 +3,12 @@ package com.eftech.windshieldfluid.controllers;
 import com.eftech.windshieldfluid.model.FluidType;
 import com.eftech.windshieldfluid.service.FluidtypeService;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +30,14 @@ public class FluidtypeController {
 	}
         
         @RequestMapping(value= "/save", method = RequestMethod.POST)
-	public String save(@ModelAttribute("fluidtype") FluidType fluidtype){
-            
+	public String save(@Valid FluidType fluidtype, BindingResult bindingResult, Model uiModel){
+            if (bindingResult.hasErrors())
+            {
+               List<FluidType> fluidtypes = fluidtypeService.findAll();
+                uiModel.addAttribute("fluidtypes", fluidtypes);
+                uiModel.addAttribute("fluidtype",fluidtype);
+                return "admin/fluidtype";
+            }
             fluidtypeService.save(fluidtype);
             return "redirect:/fluidtypes/";
  	}

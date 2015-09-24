@@ -14,6 +14,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.FetchType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import org.hibernate.validator.constraints.NotBlank;
 
 
 @Entity
@@ -37,7 +38,7 @@ public class Country implements Serializable {
         this.id = id;
     }
     
-    
+    @NotBlank(message="The field is required")
     @Size(min=2, max=100)
     @Column(name = "country", nullable = false)
     public String getCountryName() {
@@ -47,8 +48,9 @@ public class Country implements Serializable {
     public void setCountryName(String countryName) {
         this.countryName = countryName;
     }
-
-    @Size(min=1, max=45)
+    
+    @NotBlank(message="The field is required")
+    @Size(min=2, max=45)
     @Column(name = "picturename", nullable = false)
     public String getPictureName() {
         return pictureName;

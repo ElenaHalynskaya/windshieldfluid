@@ -31,12 +31,15 @@
         <h1>Add a Country</h1>
         <c:url var="actionUrl" value="/countries/save" />
         <form:form modelAttribute="country" method="post" action="${actionUrl}">
-            <form:label path="id">Id</form:label>
-            <form:input path="id"></form:input>
+            <form:hidden path="id" />
             <form:label path="countryName">Country name</form:label>
             <form:input path="countryName"></form:input>
+            <form:errors path="countryName" />
+            <br>
             <form:label path="pictureName">Picture</form:label>
             <form:input path="pictureName"></form:input>
+            <form:errors path="pictureName" />
+            <br>
             <input type="submit" value="Save"> 
         </form:form>
     </body>

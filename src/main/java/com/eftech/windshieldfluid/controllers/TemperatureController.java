@@ -5,9 +5,11 @@ import com.eftech.windshieldfluid.model.Temperature;
 import com.eftech.windshieldfluid.service.CapacityService;
 import com.eftech.windshieldfluid.service.TemperatureService;
 import java.util.List;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +31,15 @@ public class TemperatureController {
 	}
         
         @RequestMapping(value= "/save", method = RequestMethod.POST)
-	public String save(@ModelAttribute("temperature") Temperature temperature){
-            
-           temperatureService.save(temperature);
+	public String save(@Valid Temperature temperature, BindingResult bindingResult, Model uiModel){
+             if (bindingResult.hasErrors())
+            {
+                List<Temperature> temperatures = temperatureService.findAll();
+                uiModel.addAttribute("temperatures", temperatures);
+                uiModel.addAttribute("temperature", temperature);
+                return "admin/temperature";
+            }
+            temperatureService.save(temperature);
             return "redirect:/temperatures/";
  	}
         

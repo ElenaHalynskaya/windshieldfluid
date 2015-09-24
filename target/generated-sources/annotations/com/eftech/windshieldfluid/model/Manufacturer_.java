@@ -9,8 +9,8 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Manufacturer.class)
 public abstract class Manufacturer_ {
 
-	public static volatile SingularAttribute<Manufacturer, String> discription;
 	public static volatile SingularAttribute<Manufacturer, String> manufacturerName;
+	public static volatile SingularAttribute<Manufacturer, String> description;
 	public static volatile SingularAttribute<Manufacturer, Long> id;
 	public static volatile SingularAttribute<Manufacturer, String> pictureName;
 	public static volatile ListAttribute<Manufacturer, Fluid> fluids;
